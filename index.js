@@ -17,7 +17,7 @@
 function getName(character) {
   // ⭐️ Example Solution Provided For First Function ⭐️
   return character.name
-}
+};
 
 /**
  * ### Challenge `getFilmCount`
@@ -30,8 +30,9 @@ function getName(character) {
  */
 function getFilmCount(character) {
   // TODO: Add your code inside the functions (others below).
+  return character.films.length
 
-}
+};
 
 /**
  * ### Challenge `getSecondStarshipName`
@@ -43,7 +44,12 @@ function getFilmCount(character) {
 */
 function getSecondStarshipName(character) {
   // TODO: Add your code here.
-}
+  if (character.starships.length === 0) {
+    return "none";
+  } else {
+    return character.starships[1].name;
+  }
+};
 
 /**
  * ### Challenge `getSummary`
@@ -56,7 +62,10 @@ function getSecondStarshipName(character) {
  */
 function getSummary(character) {
   // TODO: Add your code here.
-}
+  return `${character.name}, ${character.height}cm, ${
+    character.mass
+  }kg. Featured in ${character.films.length} films.`;
+};
 
 /**
  * ### Challenge `getVehiclesCostInCreditsSumTotal`
@@ -68,7 +77,10 @@ function getSummary(character) {
 */
 function getVehiclesCostInCreditsSumTotal(character) {
   // TODO: Add your code here.
-}
+  const total = character.vehicles.reduce((total, cars) => {
+    return (total += cars.cost_in_credits);
+  }, 0);
+  return total;
 
 /**
  * ### Challenge `getStarshipPassengerAndCrewSumTotal`
@@ -80,9 +92,13 @@ function getVehiclesCostInCreditsSumTotal(character) {
  *
  * Sample data expected output: 27
 */
-function getStarshipPassengerAndCrewSumTotal(character) {
+function getStarshipPassengerAndCrewSumTotal (character) {
   // TODO: Add your code here.
-}
+  const total = character.starships.reduce((total, cars) => {
+    return (total += cars.passengers + cars.crew);
+  }, 0);
+  return total;
+};
 
 /**
  * ### Challenge `getNthFilm`
@@ -98,7 +114,10 @@ function getStarshipPassengerAndCrewSumTotal(character) {
  * Given film #7, expected error: `There are only 3 Star Wars movies. Flan fiction excluded.`
 */
 function getNthFilm(character, filmNumber) {
-  // TODO: Add your code here.
+  return filmNumber <= 3 && filmNumber >= 1
+    ? character.films[filmNumber - 1]
+    : `There are only 3 Star Wars movies. Flan fiction excluded. My favoreite cheesy movie is They Live!`;
+}
 }
 
 /**
